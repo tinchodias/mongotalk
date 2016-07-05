@@ -1,6 +1,8 @@
 operations
 lastError
-	| reply |
-	reply := self command: {'getLastError'->1} asDictionary.
+	"Answer the result of getLastError mongodb command. 
 	
-	^ MongoLastError newFor: reply
+	See more: https://docs.mongodb.com/manual/reference/command/getLastError
+	"
+
+	^ self lastError: MongoWriteConcern new

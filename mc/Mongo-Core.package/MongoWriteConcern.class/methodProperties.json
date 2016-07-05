@@ -1,0 +1,14 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"applyTo:" : "MartinDias 7/5/2016 18:31",
+		"ifHasJournal:" : "MartinDias 7/5/2016 18:30",
+		"ifHasTimeout:" : "MartinDias 7/5/2016 18:30",
+		"ifHasWaitAcknowledgment:" : "MartinDias 7/5/2016 18:30",
+		"journal" : "MartinDias 7/5/2016 18:26",
+		"journal:" : "MartinDias 7/5/2016 18:25",
+		"timeout" : "MartinDias 7/5/2016 18:25",
+		"timeout:" : "MartinDias 7/5/2016 18:25",
+		"waitAcknowledgment" : "MartinDias 7/5/2016 18:25",
+		"waitAcknowledgment:" : "MartinDias 7/5/2016 18:25" } }

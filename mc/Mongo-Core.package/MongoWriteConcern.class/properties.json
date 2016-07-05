@@ -1,0 +1,16 @@
+{
+	"category" : "Mongo-Core-Utilities",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "MartinDias 7/5/2016 18:33",
+	"instvars" : [
+		"journal",
+		"timeout",
+		"waitAcknowledgment" ],
+	"name" : "MongoWriteConcern",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
