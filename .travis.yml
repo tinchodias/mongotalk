@@ -8,8 +8,9 @@ os:
   - linux
 #  - osx
 services: 
-  - mongodb: "2.6"
-  - mongodb: "3.0"
+  - mongodb
+    - "2.6"
+    - "3.0"
  
 smalltalk:
   - Pharo-6.0
