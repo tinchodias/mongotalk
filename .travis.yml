@@ -8,15 +8,8 @@ os:
   - linux
 #  - osx
 services: 
-  - mongodb
- 
-addons:
-  apt:
-    sources:
-    - mongodb-3.0-precise
-    packages:
-    - mongodb-org-server
-    - mongodb-org-shell
+  - mongodb: "2.6"
+  - mongodb: "3.0"
  
 smalltalk:
   - Pharo-6.0
@@ -24,6 +17,7 @@ smalltalk:
   - Pharo-4.0
 
 before_script:
+  - "mongo --version"
   - "mongo test --eval 'db.createUser({ \"user\": \"pharounittest\", \"pwd\": \"test\", roles: [] });'"
 
 # bob-bench xUnit file analysis
