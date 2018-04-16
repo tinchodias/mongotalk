@@ -6,11 +6,11 @@ install:
 
 os:
   - linux
-#  - osx
 services: 
   - mongodb
-    - "2.6"
-    - "3.0"
+env:
+  - MONGODB=2.6
+  - MONGODB=3.0
  
 smalltalk:
   - Pharo-6.0
