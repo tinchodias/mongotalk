@@ -1,4 +1,4 @@
-as yet unclassified
+signalling
 signalCode: aNumber
 	^self new 
 		code: aNumber;

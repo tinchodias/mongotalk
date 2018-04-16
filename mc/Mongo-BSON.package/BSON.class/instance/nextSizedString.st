@@ -1,5 +1,3 @@
 reading
 nextSizedString
-	| size result  |
-	size := stream nextUInt32.
-	^ stream nextString: size
+	^ stream nextString: stream nextUInt32
