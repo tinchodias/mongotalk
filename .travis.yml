@@ -1,5 +1,7 @@
 language: smalltalk
 
+sudo: required
+
 os:
   - linux
 
