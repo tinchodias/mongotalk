@@ -8,9 +8,19 @@ os:
   - linux
 services: 
   - mongodb
+
 env:
   - MONGODB=2.6
   - MONGODB=3.0
+
+ 
+addons:
+  apt:
+    sources:
+    - mongodb-${MONGODB}-precise
+    packages:
+    - mongodb-org-server
+    - mongodb-org-shell
  
 smalltalk:
   - Pharo-6.0
@@ -26,3 +36,5 @@ after_success:
   - benchupload --dir=$SMALLTALK_CI_BUILD
 after_failure:
   - benchupload --dir=$SMALLTALK_CI_BUILD
+
+
