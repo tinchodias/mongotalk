@@ -4,6 +4,11 @@ sudo: false
 os:
   - linux
 
+smalltalk:
+  - Pharo-6.0
+  - Pharo-5.0
+  - Pharo-4.0
+
 env:
   matrix:
     - MONGODB=2.6.12
@@ -12,11 +17,6 @@ env:
 matrix:
   fast_finish: true
  
-smalltalk:
-  - Pharo-6.0
-  - Pharo-5.0
-  - Pharo-4.0
-
 install:
   - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${MONGODB}.tgz
   - tar xzf mongodb-linux-x86_64-${MONGODB}.tgz
