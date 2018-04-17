@@ -10,9 +10,8 @@ smalltalk:
   - Pharo-4.0
 
 env:
-  matrix:
-    - MONGODB=2.6
-    - MONGODB=3.0
+  - MONGODB=2.6
+  - MONGODB=3.0
 
 matrix:
   # Finish the build as soon as one job fails
