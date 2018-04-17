@@ -7,7 +7,6 @@ os:
 env:
   matrix:
     - MONGODB=2.6.12
-    - MONGODB=3.0.14
     - MONGODB=3.4.3
 
 matrix:
@@ -27,7 +26,7 @@ install:
 before_script:
   - mkdir ${PWD}/mongodb-linux-x86_64-${MONGODB}/data
   - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongod --dbpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/data --logpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/mongodb.log --fork
-  - "mongo --version"
+  - "mongod --version"
   - "mongo test --eval 'db.createUser({ \"user\": \"pharounittest\", \"pwd\": \"test\", roles: [] });'"
 
 # bob-bench xUnit file analysis
