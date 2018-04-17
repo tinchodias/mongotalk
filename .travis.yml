@@ -27,7 +27,7 @@ install:
   - pip install --user benchupload
 
 before_script:
-  - mongo test --eval 'db.createUser({ "user": "pharounittest", "pwd": "test", roles: [] });'
+  - "mongo test --eval 'db.createUser({ \"user\": \"pharounittest\", \"pwd\": \"test\", roles: [] });'"
 
 # bob-bench xUnit file analysis
 after_success:
