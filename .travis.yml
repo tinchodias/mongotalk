@@ -11,21 +11,22 @@ smalltalk:
 
 env:
   matrix:
-    - MONGODB=2.6.12
-    - MONGODB=3.4.3
+    - MONGODB=2.6
+    - MONGODB=3.0
 
 matrix:
+  # Finish the build as soon as one job fails
   fast_finish: true
+
+before_install:
+- bash .install_mongodb_on_travis.sh
+- sleep 15  # https://docs.travis-ci.com/user/database-setup/#MongoDB-does-not-immediately-accept-connections
+- mongo --eval 'db.version();'
  
 install:
-  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${MONGODB}.tgz
-  - tar xzf mongodb-linux-x86_64-${MONGODB}.tgz
-  - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongod --version
   - pip install --user benchupload
 
 before_script:
-  - mkdir ${PWD}/mongodb-linux-x86_64-${MONGODB}/data
-  - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongod --dbpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/data --logpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/mongodb.log --fork
   - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongo test --eval 'db.createUser({ \"user\": \"pharounittest\", \"pwd\": \"test\", roles: [] });'
 
 # bob-bench xUnit file analysis
@@ -33,7 +34,4 @@ after_success:
   - benchupload --dir=$SMALLTALK_CI_BUILD
 after_failure:
   - benchupload --dir=$SMALLTALK_CI_BUILD
-
-after_script:
-  - pkill mongod
 
