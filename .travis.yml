@@ -1,33 +1,32 @@
 language: smalltalk
 sudo: false
 
-install:
-  - pip install --user benchupload
-
 os:
   - linux
-services: 
-  - mongodb
 
 env:
-  - MONGODB=2.6
-  - MONGODB=3.0
+  matrix:
+    - MONGODB=2.6.12
+    - MONGODB=3.0.14
+    - MONGODB=3.4.3
 
- 
-addons:
-  apt:
-    sources:
-    - mongodb-${MONGODB}-precise
-    packages:
-    - mongodb-org-server
-    - mongodb-org-shell
+matrix:
+  fast_finish: true
  
 smalltalk:
   - Pharo-6.0
   - Pharo-5.0
   - Pharo-4.0
 
+install:
+  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${MONGODB}.tgz
+  - tar xzf mongodb-linux-x86_64-${MONGODB}.tgz
+  - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongod --version
+  - pip install --user benchupload
+
 before_script:
+  - mkdir ${PWD}/mongodb-linux-x86_64-${MONGODB}/data
+  - ${PWD}/mongodb-linux-x86_64-${MONGODB}/bin/mongod --dbpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/data --logpath ${PWD}/mongodb-linux-x86_64-${MONGODB}/mongodb.log --fork
   - "mongo --version"
   - "mongo test --eval 'db.createUser({ \"user\": \"pharounittest\", \"pwd\": \"test\", roles: [] });'"
 
@@ -37,4 +36,6 @@ after_success:
 after_failure:
   - benchupload --dir=$SMALLTALK_CI_BUILD
 
+after_script:
+  - pkill mongod
 
