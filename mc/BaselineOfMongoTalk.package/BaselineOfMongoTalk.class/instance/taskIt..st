@@ -1,6 +1,6 @@
 external projects
 taskIt: spec
-	spec project: 'TaskIt' with: [
+	spec baseline: 'TaskIt' with: [
 		spec
-			repository: 'github://pharo-contributions/taskit:v1.1.0';
+			repository: 'github://pharo-contributions/taskit:v1.1.1';
 			loads: #(minimal) ]
